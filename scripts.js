@@ -26,15 +26,33 @@ function add(File){
     }
     bt.type="button";
     const tmp=document.createElement("img");
-    tmp.src="image/icon/folder.svg";
+    if(File.type=="folder"){
+        tmp.src="image/icon/folder.svg";
+    }else{
+        // str.split('/').
+        var arr=File.name.split('.');
+        const str=arr[arr.length-1];
+        if(str=="cpp" || str=="CPP"){
+            tmp.src="image/icon/cpp.svg";
+        }
+        else{
+            tmp.src="image/icon/file.svg";
+        }
+    }
+    tmp.style.height="10%";
+    tmp.style.width=tmp.style.height;
+    tmp.style.margin="5px";
+    // tmp.style.verticalAlign="middle";
     // bt.appendChild(tmp);
     // console.log(bt.innerText);
     // console.log(tmp.textContent());
     bt.appendChild(tmp);
-    bt.innerHTML+=File.name;
+    const tp=document.createElement("p");
+    tp.innerText="   "+File.name;
+    bt.appendChild(tp);
     // const tmp=document.createElement("div");
     // tmp.appendChild(bt);
-    fdiv.appendChild(document.createElement("br"));
+    // fdiv.appendChild(document.createElement("br"));
     fdiv.appendChild(bt);
 }
 function main(){
