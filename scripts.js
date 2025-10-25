@@ -26,7 +26,7 @@ function add(File){
     }
     bt.type="button";
     const tmp=document.createElement("img");
-    if(File.type=="folder"){
+    if(File.type=="dir"){
         tmp.src="image/icon/folder.svg";
     }else{
         // str.split('/').
