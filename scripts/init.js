@@ -1,24 +1,29 @@
 //GET https://api.github.com/repos/{owner}/{repo}/git/trees/{branch}?recursive=1
 class drive {
-    #owner;
-    #repo;
-    #branch;
-    #content={};
+    owner;
+    repo;
+    branch;
+    content={};
     constructor(params) {
-        this.#owner = params.get("owner");
-        this.#repo = params.get("repo");
-        this.#branch = params.get("branch");
-        if(this.#branch==null){
-            this.#branch="main";
+        this.owner = params.get("owner");
+        this.repo = params.get("repo");
+        this.branch = params.get("branch");
+        if(this.branch==null){
+            console.debug("set default branch");
+            this.branch="main";
         }
-        console.log(`dir: ${this.#owner}>${this.#repo}>${this.#branch}`)
+        console.log(`dir: ${this.owner}>${this.repo}>${this.branch}`)
     }
     GetTree() {
-        return fetch(`https://api.github.com/repos/${this.#owner}/${this.#repo}/git/trees/${this.#branch}?recursive=1`);
+        return fetch(`https://api.github.com/repos/${this.owner}/${this.repo}/git/trees/${this.branch}?recursive=1`);
     }
+    download_url= path=>{
+        return `https://raw.githubusercontent.com/${this.owner}/${this.repo}/${this.branch}/${path}`;
+    };
 }
-let GithubDrive=JSON.parse(sessionStorage.getItem("drive"));
-
+var GithubDrive=JSON.parse(sessionStorage.getItem("drive"));
+console.log("kgkkhjk:")
+console.log(GithubDrive);
 // function debug(){
 //     const temp=new drive(new URLSearchParams(window.location.search));
 //     temp.GetTree()
@@ -26,3 +31,5 @@ let GithubDrive=JSON.parse(sessionStorage.getItem("drive"));
 //         .then(r=>console.log(r))
 // }
 // debug()
+let Container=document.createElement("div");
+Container.id="Files";
