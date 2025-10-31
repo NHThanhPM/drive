@@ -1,9 +1,10 @@
 function load(){
     // GithubDrive=new drive(GithubDrive);
     console.log("loaded from session");
-    GithubDrive.download_url= path=>{
-        return `https://raw.githubusercontent.com/${this.owner}/${this.repo}/${this.branch}/${path}`;
-    };
+    GithubDrive.download_url= function(path){
+        console.info(`path:${path}`);
+        return `https://raw.githubusercontent.com/${GithubDrive.owner}/${GithubDrive.repo}/${GithubDrive.branch}/${path}`;
+    }
     console.log(GithubDrive.content);
 };
 function add(){
