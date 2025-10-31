@@ -22,7 +22,7 @@ function IconFile(File_name,type){
     return icon;
 }
 let path=(new URLSearchParams(window.location.search)).get("path");
-if(path==null)path=[""];
+if(path==null || path==undefined)path=[""];
 else{
     path=path.split('/');
 }
@@ -53,7 +53,6 @@ for(let i=0;i<files.length;i++){
         a.href=(window.location.href.split('?')[0])+`?path=${temp.path}`;
     }
     else{
-        a.href="";
         // console.info(temp);
         fetch(GithubDrive.download_url(temp["path"]))
             .then(b=>b.blob())
