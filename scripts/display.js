@@ -51,7 +51,7 @@ for(let i=0;i<files.length;i++){
     let a=document.createElement("a");
     if(temp.type=="tree"){
         a.href=(window.location.href.split('?')[0]);
-        a.href+=`?path=${temp.path}&owner=${GithubDrive.owner}&${GithubDrive.repo}&${GithubDrive.branch}`;
+        a.href+=`?path=${temp.path}&owner=${GithubDrive.owner}&repo=${GithubDrive.repo}&branch${GithubDrive.branch}`;
     }
     else{
         // console.info(temp);
