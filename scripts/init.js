@@ -21,7 +21,10 @@ class drive {
         return `https://raw.githubusercontent.com/${this.owner}/${this.repo}/${this.branch}/${path}`;
     };
 }
-var GithubDrive=JSON.parse(sessionStorage.getItem("drive"));
+var GithubDrive=sessionStorage.getItem("drive");
+if(GithubDrive!=undefined){
+    GithubDrive=JSON.parse(GithubDrive);
+}
 console.log("kgkkhjk:")
 console.log(GithubDrive);
 // function debug(){
