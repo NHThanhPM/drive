@@ -1,3 +1,31 @@
+//display repository infomation
+/** global shareValue */
+console.log("final content:");
+console.log(GithubDrive.content);
+let GhDr=GithubDrive;
+//display owner
+{
+    let tmp=document.getElementById("owner-if");
+    tmp.innerText=GhDr.RepoInfo.owner+":";
+    tmp.href=`https://github.com/${GhDr.RepoInfo.owner}`;
+}
+//display repo
+{
+    let tmp=document.getElementById("repo-if");
+    tmp.innerText=GhDr.RepoInfo.repo;
+    tmp.href=`https://github.com/${GhDr.RepoInfo.owner}/${GhDr.RepoInfo.repo}`;
+}
+//display branch
+{
+    let tmp=document.getElementById("branch-if");
+    tmp.innerText=`(${GhDr.RepoInfo.branch})`;
+    tmp.href=`https://github.com/${GhDr.RepoInfo.owner}/${GhDr.RepoInfo.repo}/tree/${GhDr.RepoInfo.branch}`;
+}
+let Container=document.getElementById("Files");
+//wait for content loaded
+while(!ContentLoaded);
+console.log("final content:");
+console.log(GithubDrive.content);
 function IconFile(File_name,type){
     console.log(`${File_name},${type}`);
     const icon=document.createElement("img");
@@ -21,26 +49,8 @@ function IconFile(File_name,type){
     // icon.width="100%";
     return icon;
 }
-let path=(new URLSearchParams(window.location.search)).get("path");
-if(path==null || path==undefined)path=[""];
-else{
-    path=path.split('/');
-}
-console.log(path);
-console.log("lan2:")
-console.log(GithubDrive);
-let dir=GithubDrive.content;
-if(path[0]!="")
-for(let i=0;i<path.length;i++){
-    dir=dir[path[i]];
-}
-console.warn("dir:")
-console.warn(dir);
-let files=Object.keys(dir).filter(x=>(typeof dir[x]=="object"));
-//
-//
-console.log("content of dir:")
-console.log(files);
+let dir=GhDr.contentl;
+let files=Object.keys(dir);
 Container.appendChild(document.createElement("hr"));
 for(let i=0;i<files.length;i++){
     let temp=dir[files[i]];

@@ -75,7 +75,5 @@ else{
             GithubDrive.content=GithubDrive.content[path[i]];
         }
         ContentLoaded=true;
-        console.log("final content:");
-        console.log(GithubDrive.content);
     })
 }

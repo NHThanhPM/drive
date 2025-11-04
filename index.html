@@ -60,6 +60,7 @@
                 background-color:gainsboro;
             }
         </style>
+        <script src="scripts/init.js"></script>
     </head>
     <body>
         <div id="TopBar">
@@ -67,11 +68,13 @@
                 <img src="image/github-mark/github-mark.svg" alt="github logo" width="44" height="43">
                 <h1>Drive</h1>
                 <br>
-                <p id="owner">Developed by NHThanh</p>
+                <div id="ifmt">
+                    <a href="github.com/NHThanhPM" id="owner-if">NHThanhPM:</a><a href="github.com/NHThanhPM/ChuyenTin" id="repo-if">ChuyenTin</a><a href="github.com/NHThanhPM/ChuyenTin/tree/main" id="branch-if">(main)</a>
+                </div>
             </div>
         </div>
         <div id="Files"></div>
-        <script src="scripts/init.js"></script>
-        <script src="scripts/convert.js"></script>
+        <script src="scripts/display.js"></script>
+        <!-- <script src="scripts/convert.js"></script> -->
     </body>
 </html>
