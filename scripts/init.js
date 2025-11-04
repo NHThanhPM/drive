@@ -52,11 +52,13 @@ function ConvertListToTree(list){
     return tree;
 }
 let GithubDrive=new drive(parameters);
+let ContentLoaded=true;
 if(GithubDrive.RepoInfo==GetInfoFromSession()){
     console.log("Load drive info from session storage");
     GithubDrive.content=JSON.parse(sessionStorage.getItem("drive_content"));
 }
 else{
+    ContentLoaded=false;
     sessionStorage.setItem("drive_info",JSON.stringify(GithubDrive.RepoInfo));
     console.log("Fetch drive info from github api");
     GithubDrive.GetTree()
@@ -68,5 +70,12 @@ else{
         console.log(GithubDrive.content);
         sessionStorage.setItem("drive_content",JSON.stringify(GithubDrive.content));
         // window.location.reload();
+        //move content to path
+        for(let i=3;i<path.length;i++){
+            GithubDrive.content=GithubDrive.content[path[i]];
+        }
+        ContentLoaded=true;
+        console.log("final content:");
+        console.log(GithubDrive.content);
     })
 }
