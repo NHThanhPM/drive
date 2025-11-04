@@ -1,7 +1,5 @@
 //display repository infomation
 /** global shareValue */
-console.log("final content:");
-console.log(GithubDrive.content);
 let GhDr=GithubDrive;
 //display owner
 {
@@ -23,7 +21,7 @@ let GhDr=GithubDrive;
 }
 let Container=document.getElementById("Files");
 //wait for content loaded
-while(!ContentLoaded);
+// while(!ContentLoaded);
 console.log("final content:");
 console.log(GithubDrive.content);
 function IconFile(File_name,type){
@@ -49,11 +47,12 @@ function IconFile(File_name,type){
     // icon.width="100%";
     return icon;
 }
-let dir=GhDr.contentl;
+let dir=GhDr.content;
 let files=Object.keys(dir);
 Container.appendChild(document.createElement("hr"));
 for(let i=0;i<files.length;i++){
     let temp=dir[files[i]];
+    if(typeof temp!="object")continue;
     console.log(`file:${i}`);
     console.warn("file:");
     console.warn(temp);
@@ -61,7 +60,7 @@ for(let i=0;i<files.length;i++){
     let a=document.createElement("a");
     if(temp.type=="tree"){
         a.href=(window.location.href.split('?')[0]);
-        a.href+=`?path=${temp.path}&owner=${GithubDrive.owner}&repo=${GithubDrive.repo}&branch=${GithubDrive.branch}`;
+        a.href+=`?path=${GithubDrive.RepoInfo.owner}/${GithubDrive.RepoInfo.repo}/${GithubDrive.RepoInfo.branch}/${temp.path}`;
     }
     else{
         // console.info(temp);
